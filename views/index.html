@@ -15,7 +15,7 @@
         <div class="panel-body" id="options-panel">
           <div>
             <h4>Hotels</h4>
-            <select data-type="hotel" id="hotel-choices">
+            <select data-type="hotel" id="hotel-choices"> 
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
           </div>
@@ -83,25 +83,7 @@
 </div>
 <!-- You are going to want to remove this entire script tag and replace it with AJAX requests. `options.js` is a great place to look for that. Do note that `options.js` loading will be asynchronous now -->
 <!-- How are requests currently being made? When we are looking for the index.html, it is rendered from our server and given a couple of objects, `templateHotels` is one of them -->
-<!-- <script>
-  {% autoescape false %}
-  var hotels = {{ templateHotels | json }};
-  var restaurants = {{ templateRestaurants | json }};
-  var activities = {{ templateActivities | json }};
-  {% endautoescape %}
 
-</script> -->
 
-<script type="text/javascript">
-$.ajax({
-  method: GET, 
-  url: '/api/activities' 
-}).then(function(activites){
-  activities.forEach(function(activity){
-    console.log(activity.name)
-  });
-  
-})
-</script>
 
 {% endblock %}
