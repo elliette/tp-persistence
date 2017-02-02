@@ -44,6 +44,8 @@ var attractionsModule = (function () {
 
         loadEnhancedAttractions: function (type, collection) {
             enhanced[type] = collection.map(attractionModule.create);
+            console.log("This is the type and collection!"); 
+            console.log(type, collection); 
         }
 
     };

@@ -56,11 +56,20 @@ var tripModule = (function () {
     
     $.ajax({
       method: 'POST',
-      url: '/days'
-    }).then(function(someData){
-      console.log(someData);
+      url: '/days', 
+      data: {
+        number: days.length+1
+      }
+    }).then(function(day){
+      console.log("the days array has a length of " + days.length); 
+      var newDay = dayModule.create(day); 
+      days.push(newDay);
+
+      if (days.length === 1) {
+        currentDay = newDay;
+      }
+      switchTo(newDay);
     })
-    .catch(next);
 
 
     // var newDay = dayModule.create({ number: days.length + 1 }); // dayModule
@@ -107,7 +116,9 @@ var tripModule = (function () {
     switchTo: switchTo,
 
     addToCurrent: function (attraction) {
-      currentDay.addAttraction(attraction);
+      console.log(attraction); 
+      var x = currentDay.addAttraction(attraction);
+      console.log(x); 
     },
 
     removeFromCurrent: function (attraction) {

@@ -3,14 +3,16 @@ const router = express.Router();
 const Days = require('../../models/day');
 
 
-router.get('/:id', function(req, res, next) {
-	// Days.findAll()
- //  .then(function(days){
- //    console.log("HEY");
- //  })
- //  .catch(next);
+router.get('/', function(req, res, next) {
+	Days.findAll()
+  .then(function(days){
+    res.json(days); 
+  })
+  .catch(next);
 
 });
+
+ // var number = 1; 
 
 router.post('/', (req, res, next) => {
   // once the + button is clicked,
@@ -18,10 +20,7 @@ router.post('/', (req, res, next) => {
   // Day.create({
 
   // })
-  console.log(req.body);
-  Days.create({
-    number: 1
-  })
+  Days.create(req.body)
   .then(function(newDay){
     res.json(newDay);
   })

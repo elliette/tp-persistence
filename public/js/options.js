@@ -109,9 +109,12 @@ $(function () {
     $optionsPanel.on('click', 'button[data-action="add"]', function () {
         var $select = $(this).siblings('select');
         var type = $select.data('type'); // from HTML data-type attribute
+        console.log(type); 
         var id = $select.find(':selected');
-        // get associated attraction and add it to the current day in the trip
+        console.log("ID IS " + id); 
+                // get associated attraction and add it to the current day in the trip
         var attraction = attractionsModule.getByTypeAndId(type, id);
+        console.log("ATTRACTION IS " + attraction); 
         tripModule.addToCurrent(attraction);
 
     });
