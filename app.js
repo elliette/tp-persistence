@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var swig = require('swig');
 var path = require('path');
 
+
 var db = require('./models');
 
 var app = express();
@@ -26,9 +27,11 @@ app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dis
 app.use(express.static(path.join(__dirname, '/public')));
 
 // serve dynamic routes
-app.use('/api', require('./routes/api'));
-app.use('api/days.js', require('./routes/api/days')); 
-app.use('/api/', require('./routes/api/attractions')); 
+app.use('/days', require('./routes/api/days'));
+app.use('/attractions', require('./routes/api/attractions'));
+app.use('/', require('./routes'));
+// app.use('api/days.js', require('./routes/api/days')); 
+// app.use('/api/', require('./routes/api/attractions')); 
 
 
 // failed to catch req above means 404, forward to error handler

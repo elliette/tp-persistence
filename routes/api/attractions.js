@@ -19,7 +19,7 @@ router.get('/hotels', function(req, res, next) {
 			// });
 			// res.json(hotelNames);
 		// });
-})
+});
 
 router.get('/restaurants', function(req, res, next) {
 	Restaurants.findAll()
@@ -32,7 +32,7 @@ router.get('/restaurants', function(req, res, next) {
 		// 	});
 		// 	res.json(restaurantNames);
 		// })
-})
+});
 
 router.get('/activities', function(req, res, next) {
 	Activities.findAll()
