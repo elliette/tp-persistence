@@ -27,9 +27,9 @@ app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dis
 app.use(express.static(path.join(__dirname, '/public')));
 
 // serve dynamic routes
-app.use('/days', require('./routes/api/days'));
-app.use('/attractions', require('./routes/api/attractions'));
 app.use('/', require('./routes'));
+app.use('/attractions', require('./routes/api/attractions'));
+app.use('/days', require('./routes/api/days'));
 // app.use('api/days.js', require('./routes/api/days')); 
 // app.use('/api/', require('./routes/api/attractions')); 
 

@@ -28,10 +28,75 @@ $(function () {
 
     // Once you've made AJAX calls to retrieve this information,
     // call attractions.loadEnhancedAttractions in the fashion
-    // exampled below in order to integrate it.
+    // exampled below in order to integrate it:
+
     // attractionsModule.loadEnhancedAttractions('hotels', hotels);
     // attractionsModule.loadEnhancedAttractions('restaurants', restaurants);
     // attractionsModule.loadEnhancedAttractions('activities', activities);
+
+
+    $.ajax({
+        method: 'GET',
+        url: '/attractions/hotels'
+    }).then(function(hotels) {
+
+        var $hotelChoices = $("#hotel-choices");
+        
+        hotels.forEach(function(hotel) {
+            $hotelChoices.append(`<option>${hotel.name}</option>`)
+        });
+        
+        attractionsModule.loadEnhancedAttractions('hotels', hotels);
+
+    }).catch(console.error.bind(console))
+
+    $.ajax({
+        method: 'GET',
+        url: '/attractions/restaurants'
+    }).then(function(restaurants) {
+
+        var $restaurantChoices = $("#restaurant-choices");
+        restaurants.forEach(function(restaurant) {
+            $restaurantChoices.append(`<option>${restaurant.name}</option>`)
+        });
+
+        attractionsModule.loadEnhancedAttractions('restaurants', restaurants);
+
+    }).catch(console.error.bind(console))
+    
+    $.ajax({
+        method: 'GET',
+        url: '/attractions/activities'
+    }).then(function(activities) {
+
+        var $activityChoices = $("#activity-choices");
+        activities.forEach(function(activity) {
+            $activityChoices.append(`<option>${activity.name}</option>`)
+        });
+
+        attractionsModule.loadEnhancedAttractions('activities', activities);
+
+    }).catch(console.error.bind(console));
+
+
+
+
+    // $hotelSelect.forEach(function(hotel){
+    //     console.log(hotel);
+    // })
+    // var $hotelAdd = $("#hotel-choices.next");
+    // $hotelAdd.click(function(event){
+    //     $.ajax({
+    //         method: 'POST',
+    //         url: '/days',
+    //         data: '{
+                
+    //         }'
+    //     }).then(function())
+    // })
+    
+
+
 
     function makeOption(databaseAttraction) {
         var $option = $('<option></option>') // makes a new option tag
@@ -44,10 +109,11 @@ $(function () {
     $optionsPanel.on('click', 'button[data-action="add"]', function () {
         var $select = $(this).siblings('select');
         var type = $select.data('type'); // from HTML data-type attribute
-        var id = $select.find(':selected').val();
+        var id = $select.find(':selected');
         // get associated attraction and add it to the current day in the trip
         var attraction = attractionsModule.getByTypeAndId(type, id);
         tripModule.addToCurrent(attraction);
+
     });
 
 });

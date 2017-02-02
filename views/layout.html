@@ -39,50 +39,6 @@
     <script src="/js/attractions.js"></script>
     <script src="/js/options.js"></script>
     <script src="/js/main.js"></script>
-    <script>
-    
-    $.ajax({
-        method: 'GET',
-        url: '/api/hotels'
-    }).then(function(hotels) {
-
-        var $hotelChoices = $("#hotel-choices");
-        hotels.forEach(function(hotel) {
-            $hotelChoices.append(`<option>${hotel.name}</option>`)
-            console.log(hotel.name)
-        });
-
-    }).catch(console.error.bind(console))
-
-    $.ajax({
-        method: 'GET',
-        url: '/api/restaurants'
-    }).then(function(restaurants) {
-
-        var $restaurantChoices = $("#restaurant-choices");
-        restaurants.forEach(function(restaurant) {
-            $restaurantChoices.append(`<option>${restaurant.name}</option>`)
-            console.log(restaurant.name)
-        });
-
-    }).catch(console.error.bind(console))
-    
-    $.ajax({
-        method: 'GET',
-        url: '/api/activities'
-    }).then(function(activities) {
-
-        var $activityChoices = $("#activity-choices");
-        activities.forEach(function(activity) {
-            $activityChoices.append(`<option>${activity.name}</option>`)
-            console.log(activity.name)
-        });
-
-    }).catch(console.error.bind(console))
-    
-
-
-    </script>
 
 
 

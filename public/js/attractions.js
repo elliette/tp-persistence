@@ -16,8 +16,10 @@ var attractionsModule = (function () {
     // private helper methods (only available inside the module)
 
     function findById(array, id) {
+      
         return array.find(function (el) {
             return +el.id === +id;
+            console.log(el.id);
         });
     }
 
